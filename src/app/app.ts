@@ -1,12 +1,20 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MenubarComponent } from './component/menubar/menubar';
+import { PrimeNG } from 'primeng/config';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MenubarComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit{
   protected readonly title = signal('pravasa-ui');
+
+  constructor(private primeng: PrimeNG){}
+
+  ngOnInit(): void {
+    this.primeng.ripple.set(true);
+  }
 }
