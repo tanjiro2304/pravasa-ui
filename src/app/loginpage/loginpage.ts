@@ -6,6 +6,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { ButtonModule } from 'primeng/button';
+import { User } from '../models/User';
+import { UserService } from '../service/user-service';
 @Component({
   selector: 'app-loginpage',
   imports: [FormsModule, InputGroupModule, InputGroupAddonModule, InputTextModule, SelectModule, InputNumberModule, ButtonModule],
@@ -13,7 +15,21 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './loginpage.css',
 })
 export class Loginpage {
-  text1: string | undefined;
 
-    text2: string | undefined;
+  constructor(private userService: UserService) {}
+
+  user: User  = {
+    id: 0,
+    username: '',
+    password: '',
+    token: ''
+  };
+
+  onSubmit(){
+    this.userService.login(this.user).subscribe({
+      next: res =>{
+        alert('Login successful! Token stored.');
+      }
+    });
+  }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenubarComponent } from './component/menubar/menubar';
 import { PrimeNG } from 'primeng/config';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
